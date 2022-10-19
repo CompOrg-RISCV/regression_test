@@ -190,6 +190,9 @@ LOAD_TEST:
 // if you have branches working at this point, use a branch to valid the load operation and
 // upon a failed load, branch to LOAD_FAIL to indicate a failed load operation which will
 // need to be debugged
+// 
+// Use the data that was stored in memory from the store instruction test sequence to test 
+// the load operations
 	nop
 	nop
 	nop
