@@ -85,12 +85,16 @@ _start:
  /*
  	Branch (b-type) operations
  */
-
+// If a branch test fails, it should branch to BRANCHE_FAIL indicating the
+// need to debug your branch circuitry
 	nop
 	nop
 	nop
 	nop
 	beq x0, x0, PASS
+        nop
+        nop
+        nop
 BRANCH_FAIL:
 	nop
 	nop
@@ -183,6 +187,9 @@ DATA:
  	Load (l-type)  operations
  */
 LOAD_TEST:
+// if you have branches working at this point, use a branch to valid the load operation and
+// upon a failed load, branch to LOAD_FAIL to indicate a failed load operation which will
+// need to be debugged
 	nop
 	nop
 	nop
