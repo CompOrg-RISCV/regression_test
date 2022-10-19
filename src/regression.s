@@ -126,20 +126,25 @@ PASS:
  	Store (s-type)  operations
  */
  	// Loading test data into registers for Store / Load tests
- 	addi x20, x0, 0x765
- 	slli x20, x20, 12
- 	ori	x20, x20, 0x432
- 	slli x20, x20, 8
- 	ori x20, x20, 0x10				// x20 = 0x76543210
- 	xori x21, x20, 0xfff			// x21 = 0x89abcdef
+    lui x20, 0x210
+    srli x20, x20, 12
+    lui x30, 0x76543
+    or x20, x20, x30                        // x20 = 76543210
+    lui x21, 0xdef
+    srli x21, x21, 12
+    lui x30, 0x89abc
+    or x21, x21, x30                        // x21 = 0x89abcdef
+
  	// Load register x10 with base DATA memory location
- 	addi x10, x0, (DATA >> 12)		// Assume DATA memory address less than 24-bits
- 	slli x10, x10, 12				// Move the upper 12-bits to locations 12..23
- 	ori x10, x10, (DATA & 0xfff)	// OR in the lower 12-bits to create all 24-bits
- 	// Load register x11 with base DATA_MINU location
- 	addi x11, x0, (DATA_MINUS >> 12)	// Assume DATA memory address less than 24-bits
- 	slli x11, x11, 12					// Move the upper 12-bits to locations 12..23
- 	ori x11, x11, (DATA_MINUS & 0xfff)	// OR in the lower 12-bits to create all 24-bits
+ 	lui x10, (DATA & 0xfff)		            // Use linker to obtain lower 12-bits
+ 	srli x10, x10, 12				        // Move the lower 12-bits to locations 11..0
+    lui x30, ((DATA & 0xfffff000) >> 12)    // Move the upper DATA address bits into upper 20-bits
+ 	or x10, x10, x30           	        // x10 = DATA address
+ 	// Load register x11 with base DATA_MINUs location
+ 	lui x11, (DATA_MINUS & 0xfff)		    // Use linker to obtain lower 12-bits
+ 	srli x11, x11, 12				        // Move the lower 12-bits to locations 11..0
+    lui x30, ((DATA_MINUS & 0xfffff000) >> 12)    // Move the upper DATA address bits into upper 20-bits
+ 	or x11, x11, x30           	        // x11 = DATA_MINUS address
  	// start of Store Instruction test
 	nop
 	nop
@@ -169,6 +174,10 @@ DATA:
  	nop
  	nop
  DATA_MINUS:
+        nop
+        nop
+        nop
+        nop
 
  /*
  	Load (l-type)  operations
