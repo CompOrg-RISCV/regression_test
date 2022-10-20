@@ -43,7 +43,7 @@ _start:
  	nop
  	nop
  /*
- 	Immediate (r-type) ALU operations
+ 	RTYPE ALU operations
  */
 	nop
 	nop
