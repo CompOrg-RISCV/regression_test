@@ -55,7 +55,7 @@ _start:
  	nop
  	nop
  /*
- 	Immediate (r-type immediate) ALU operations
+ 	Shift Immediate ALU operations
  */
 	nop
 	nop
