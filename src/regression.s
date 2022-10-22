@@ -35,7 +35,7 @@ _start:
  	nop
  	nop
  	nop
- 	addi x2, x2, (-1 & 0xfff)	// add -1 to x2
+ 	addi x2, x2, (-1 & 0xfff)	// add -1 to x2, x2 = 1
  	nop					// x2 = 2
  	nop
  	nop
