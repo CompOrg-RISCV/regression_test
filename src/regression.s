@@ -21,7 +21,7 @@ _start:
         - slti
         - sltiu
         - xori
-	- ori
+        - ori
         - andi
     - immediates are positive and negative
     - there are operations that use unsigned numbers
@@ -31,6 +31,8 @@ _start:
          - greater than
     - there must be 3 nops between instructions in that this test will be
     used before data hazard detection and forwarding has been implemented
+
+    Will use this test for Assignment 5: Data Path and Instruction Decode
  */
  	addi x2, x0, 2				// load 2 into register x2
  	nop
@@ -88,6 +90,8 @@ _start:
     RTYPE instruction tests
          - example, addi x1, x0, 1   // loads a 1 in register x1
                     addi x2, x0, -1  // loads a -1 (0xffffffff) into register x2
+
+    Will use this test for Assignment 5: Data Path and Instruction Decode
  */
     nop 
 	nop
@@ -111,6 +115,8 @@ _start:
     of bits shifted are padded with 0s) while an arithematic shifts maintain 
     the sign (the number of bits shifted are padded with the sign bit value)
     - both negative and positive values must be tested for each operation
+
+    Will use this test for Assignment 5: Data Path and Instruction Decode
  */
 	nop
 	nop
@@ -130,6 +136,8 @@ _start:
     - Data forwarding must be tested for each register operand, rs1 and rs1,
     for each instruction in the pipeline after the ID (Instruction Decode) stage,
     EX, MEM, and WB.  To test this combination, a minimum of 6 tests are required.
+
+    Will use this test for Assignment 6: Data Hazard and Data Forwarding
  */
  	addi x2, x0, 1				// load x2 register with 1
  	addi x3, x0, 2				// load x3 register with 2
@@ -167,6 +175,8 @@ _start:
     - You can add new BRANCH labels for testing.  Highly recommended.
     - if a branch test fails, it should branch to the BRANCH_FAIL label to 
     help indicate which branch test fails
+
+    Will use this test for Assignment 7: Branch and Jumps
 
  */
 	nop
@@ -213,6 +223,8 @@ PASS:
     - You can add new JUMP labels for testing.  Highly recommended.
     - if a jump test fails, it should branch to the JUMP_FAIL label to 
     help indicate which jump test fails
+
+    Will use this test for Assignment 7: Branch and Jumps
  */
 	nop
 	nop
@@ -250,6 +262,8 @@ JUMP_PASS:
     of a data word indicating a minimum of 2 sh (store half-word) tests
     - you  will be using the memory view of the debugger to validate 
     the store operations
+    
+    Will use this test for Assignment 8: Stores and Loads
  */
  	// Loading test data into registers for Store / Load tests
     lui x20, 0x210
@@ -331,6 +345,8 @@ DATA:
     - if you have branches working at this point, use a branch to validate 
     the proper load operation and upon failure, branch to LOAD_FAIL label to
     indicate a failed load operation to debug
+    
+    Will use this test for Assignment 8: Stores and Loads
  */
 LOAD_TEST:
 	nop
