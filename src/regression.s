@@ -21,6 +21,7 @@ _start:
         - slti
         - sltiu
         - xori
+	- ori
         - andi
     - immediates are positive and negative
     - there are operations that use unsigned numbers
